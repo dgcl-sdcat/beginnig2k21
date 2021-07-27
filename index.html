@@ -48,7 +48,7 @@
         map.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
         var layer_OpenStreetMap_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             pane: 'pane_OpenStreetMap_0',
-            opacity: 1.0,
+            opacity: 0.8,
             attribution: '',
             minZoom: 3,
             maxZoom: 28,
@@ -84,7 +84,7 @@
         function style_EPCI_relance_dotation_1_0() {
             return {
                 pane: 'pane_EPCI_relance_dotation_1',
-                opacity: 1,
+                opacity: 0.5,
                 color: 'rgba(247,252,245,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
@@ -177,7 +177,7 @@
                 return this._div;
             };
             title.update = function () {
-                this._div.innerHTML = '<h2>Dotations d\'investissment relance en 2020 - DSIL RT, DSID RT et DSILM LFR 3</h2>';
+                this._div.innerHTML = '<h3>Dotations d\'investissment relance en 2020 - DSIL RT, DSID RT et DSILM LFR 3</h3>';
             };
             title.addTo(map);
         setBounds();
