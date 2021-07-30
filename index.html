@@ -25,3 +25,20 @@
         map.addLayer(osmLayer);
     }
 </script>
+
+var ggRoadmap = new L.Google('ROADMAP');
+var ggSatellite = new L.Google('');
+var ggTerrain = new L.Google('TERRAIN');
+var ggHybrid = new L.Google('HYBRID');
+
+map.addLayer(osmLayer); // Le layer par défaut
+map.addControl(new L.Control.Layers( {
+    'OpenStreetMap': osmLayer, 
+    'Google Roadmap' : ggRoadmap, 
+    'Google Satellite': ggSatellite, 
+    'Google Terrain': ggTerrain, 
+    'Google Hybrid' : ggHybrid
+    }, {})
+);
+
+
