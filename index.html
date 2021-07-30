@@ -41,4 +41,60 @@ map.addControl(new L.Control.Layers( {
     }, {})
 );
 
+var map = L.map('map').setView([48.833, 2.333], 7);
+    
+let stamenLite = L.tileLayer('//{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> — Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    subdomains: 'abcd',
+    maxZoom: 20,
+    minZoom: 0,
+    label: 'Toner Lite'  // Libellé pour le tooltip en option
+    });
+        
+let stamenToner = L.tileLayer('//{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> — Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    subdomains: 'abcd',
+    maxZoom: 20,
+    minZoom: 0,
+    label: 'Toner'
+});
+
+let stamenColor = L.tileLayer('//{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> — Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    subdomains: 'abcd',
+    maxZoom: 16,
+    minZoom: 1,
+    label: 'Watercolor'
+});
+
+map.addControl(L.control.basemaps({
+    basemaps: [stamenLite, stamenToner, stamenColor],
+    tileX: 0,  // Coordonnée X de la prévisualisation
+       tileY: 0,  // Coordonnée Y de la prévisualisation
+    tileZ: 1   // Niveau de zoom de la prévisualisation
+}));
+
+L.marker([48.5, -0.09]).addTo(map)
+    .bindPopup('Le texte du marker<br> On peut y mettre du code HTML');
+
+var customIcon = L.icon({
+    iconUrl: 'icon-marker.png',
+    //shadowUrl: 'icon-shadow.png',
+    iconSize:     [64, 64], // taille de l'icone
+    //shadowSize:   [50, 64], // taille de l'ombre
+    iconAnchor:   [32, 64], // point de l'icone qui correspondra à la position du marker
+    //shadowAnchor: [32, 64],  // idem pour l'ombre
+    popupAnchor:  [-3, -76] // point depuis lequel la popup doit s'ouvrir relativement à l'iconAnchor
+});
+
+L.marker([48.5, 0.5], {icon: customIcon}).addTo(map);
+
+L.marker([48.5, 2]).addTo(map)
+    .bindTooltip("Les Granges-le-Roi", {permanent: true, direction: 'top'});
+
+.leaflet-tooltip-top {
+    margin-top: -15px; // Valeur par défaut -6px
+}
+
+
 
